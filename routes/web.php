@@ -21,25 +21,7 @@ Route::get('/', function () {
 
 // Modal
 Route::get('/modal', [ImageUploadController::class, 'modal'])->name('modal');
-
-// Image Upload
-Route::get('/upload', [DropzoneController::class, 'upload'])->name('upload');
-Route::post('/drag/upload', [DropzoneController::class, 'drag_upload'])->name('drag.upload');
-
-Route::get('/all/info', [DropzoneController::class, 'all_info'])->name('all.info');
-
-
-
-
-
-
-
-
-
-// Dropzone Image Upload
-
-// Route::get('image/upload', [ImageUploadController::class, 'file_create']);
-
+// fetch all data
+Route::get('/all', [ImageUploadController::class, 'showAll'])->name('all.info');
+// upload image
 Route::post('/image/upload/store', [ImageUploadController::class, 'file_store'])->name('image.upload.store');
-
-// Route::post('image/delete', 'ImageUploadController@fileDestroy');

@@ -140,12 +140,15 @@
             timeout: 1000,
             success: function(file, response) {
                 const source = response.success;
-                // showImage(source);
-                console.log(source);
 
-                document.querySelector(".media-image-grid").innerHTML = "loading...";
-                hidePreview();
-                show();
+                if(response.status){
+                    document.querySelector(".media-image-grid").innerHTML = "loading...";
+                    hidePreview();
+                    show();
+                }else{
+                    alert(response.message);
+                }
+
             },
             error: function(file, response) {
                 return false;
@@ -156,21 +159,15 @@
     <script>
         function show() {
             const xhr = new XMLHttpRequest();
-
             xhr.onload = function() {
                 let data = JSON.parse(this.response).data;
                 document.querySelector(".media-image-grid").innerHTML = "";
                 data.forEach(element => {
                     // console.log(element);
-
                     showImage(element.filename);
-
                 });
             }
-
-            xhr.open('GET', 'all/info');
-
-
+            xhr.open('GET', 'all');
             xhr.send();
         }
 
@@ -188,7 +185,7 @@
             const copyURL = document.getElementById("copy-url");
             copyURL.style.display = "block";
             copyURL.addEventListener("click", function() {
-                navigator.clipboard.writeText("http://127.0.0.1:8000/images/" + fileName.innerHTML);
+                navigator.clipboard.writeText("{{ asset('/images') }}"+"/" + fileName.innerHTML);
 
                 document.getElementById("copy").innerHTML = "Copied";
                 const myTimeOut = setTimeout(() => {
@@ -201,7 +198,7 @@
             const img = document.createElement("img");
             img.style.width = "128px";
             img.style.height = "85px";
-            img.src = "./images/" + source;
+            img.src = "{{ asset('/images') }}"+"/" + source;
 
             const div = document.createElement("div");
             div.classList.add("media-img-grid-item");
@@ -222,7 +219,7 @@
                 const copyURL = document.getElementById("copy-url");
                 copyURL.style.display = "block";
                 copyURL.addEventListener("click", function() {
-                    navigator.clipboard.writeText("http://127.0.0.1:8000/images/" + fileName.innerHTML);
+                    navigator.clipboard.writeText("{{ asset('/images') }}"+"/" + fileName.innerHTML);
 
                     document.getElementById("copy").innerHTML = "Copied";
                     const myTimeOut = setTimeout(() => {
