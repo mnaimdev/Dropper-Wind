@@ -1,0 +1,281 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    border: none;
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+.main-media {
+    width: 950px;
+    height: 550px;
+    background: #dddddd;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    visibility: hidden;
+    z-index: -10;
+}
+
+.media-top-section {
+    border-bottom: 1px solid #c1c1c1;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    font-size: 20px;
+    line-height: 2.4;
+}
+
+.drag-media {
+    margin-left: auto;
+}
+
+.media-upload-btn {
+    border-radius: 5px;
+    font-size: 25px;
+}
+
+/* .media-upload-btn:hover {
+    background: rebeccapurple;
+    color: white;
+    border: 1px solid grey;
+} */
+
+.media-search-bar {
+    border: 1px solid #c1c1c1;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    margin-left: 25px;
+}
+
+.media-search-box {
+    padding: 15px 2px 13px 15px;
+    font-size: 17px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+.media-search-btn {
+    padding: 13px 18px;
+    border-radius: 5px;
+    background: #e3e3e3;
+    font-size: 20px;
+}
+
+.media-search-btn:hover {
+    background: rebeccapurple;
+    color: white;
+}
+
+.media-close-btn {
+    padding: 13px 20px;
+    border-radius: 5px;
+    border: 1px solid #c1c1c1;
+    font-size: 20px;
+}
+
+.media-close-btn:hover {
+    background: red;
+    color: white;
+}
+
+.media-image-section {
+    display: flex;
+    gap: 10px;
+}
+
+.media-img-list {
+    width: 712px;
+    padding: 10px;
+}
+
+.media-image-grid {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    width: 100%;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.media-img-grid-item {
+    text-align: center;
+    font-size: 15px;
+    width: 128px;
+    height: 85px;
+    background: #f0f0f0;
+}
+
+.media-img-grid-item:hover {
+    cursor: pointer;
+}
+
+.media-img-desc {
+    width: 238px;
+    height: 476px;
+    background: #f0f0f0;
+    border-bottom-right-radius: 5px;
+    padding: 10px 20px;
+    border-left: 1px solid #c1c1c1;
+}
+
+.media-img-desc-item {
+    margin-bottom: 25px;
+    margin-top: 30px;
+}
+
+.media-file-name {
+    display: none;
+}
+
+.media-copy-btn {
+    background: green;
+    padding: 15px 10px;
+    color: white;
+    border-radius: 5px;
+    width: 130px;
+    font-size: 15px;
+    display: none;
+}
+
+.media-copy-btn:hover {
+    background: rebeccapurple;
+}
+
+.media-delete-btn {
+    background: red;
+    padding: 15px 10px;
+    color: white;
+    border-radius: 5px;
+    width: 130px;
+    font-size: 15px;
+    display: none;
+}
+
+.media-delete-btn:hover {
+    background: rebeccapurple;
+}
+
+/* Naim CSS */
+/* Modal */
+.media-modal {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.media-modal:hover {
+    cursor: pointer;
+}
+
+/* Modal Container */
+.media-modal-container {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.media-display .img:hover {
+    cursor: pointer;
+}
+
+.main-media-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    z-index: -10;
+    display: grid;
+    place-items: center;
+    background-color: #00000085;
+}
+
+/* Dropzone Configure  */
+/* .dz {
+    margin-top: 180px;
+    border: dashed !important;
+    border-color: #ccc !important;
+    border-radius: 10px !important;
+
+    /* REQUIRED. This will prevent the dropzone area from getting bigger.*/
+/* max-height: 80px !important; */
+/* } */
+
+/* Here are the other styles for Dropzone.
+These will give it the same look as in the
+picture. Which I think is better for non image files.*/
+
+/* Manually place the uploaded files.*/
+.dz-preview {
+    top: 5px !important;
+    margin: 0px !important;
+    min-height: 0px !important;
+    display: none !important;
+}
+
+.dropzone .dz-message .dz-button {
+    display: none !important;
+}
+
+.dropzone {
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    background: #fff;
+    padding: 10px !important;
+    min-height: 80px !important;
+}
+
+/* Manually create the shape of the bubble.*/
+.dz-image {
+    width: 30px !important;
+    height: 30px !important;
+    /* Add this to create cool colors, if you want. */
+    /* background: linear-gradient(to bottom, #28a745, #dc3545) !important; */
+    position: relative;
+    display: none !important;
+}
+
+/* Manually put the file size into the bubble. */
+.dropzone .dz-preview .dz-details > .dz-size {
+    position: absolute;
+    top: 0px !important;
+    display: none !important;
+}
+
+/* Manually put the file name into the bubble.*/
+.dz-details > .dz-filename {
+    position: absolute;
+    top: 0px !important;
+    left: 100px !important;
+}
+
+/* Put the details below the upload area and button. */
+.dz-details {
+    position: absolute;
+    top: 305.5px;
+}
+
+/* Make the loading bar slim and cover 80% of the file bubble.*/
+.dropzone .dz-preview .dz-progress {
+    position: relative !important;
+    height: 3px !important;
+    left: 0px !important;
+    width: 30% !important;
+    margin-left: 10px !important;
+    border-radius: 0px !important;
+}
