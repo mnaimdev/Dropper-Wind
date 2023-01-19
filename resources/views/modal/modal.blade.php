@@ -163,7 +163,6 @@
                 data.forEach(element => {
                     // console.log(element);
 
-
                     showImage(element.filename);
 
                 });
@@ -196,7 +195,6 @@
                     document.getElementById("copy").innerHTML = "";
                 }, 3000);
             });
-
         }
 
         function showImage(source) {

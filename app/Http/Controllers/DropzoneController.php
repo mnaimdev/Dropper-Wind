@@ -8,39 +8,35 @@ use Illuminate\Http\Request;
 class DropzoneController extends Controller
 {
 
-
     function upload()
     {
-        // $images = ImageUpload::latest('created_at')->get();
         return view('image.upload',);
     }
 
     function drag_upload(Request $request)
     {
-        exit();
-        $image = $request->file('file');
-        $onlyName = $image->getClientOriginalName();
 
-        $imageName = sha1(time()) . $onlyName;
+        $image = $request->file('file');
+        $imageName = $image->getClientOriginalName();
+
+        if (ImageUpload::where('filename', $imageName)->count() > 0) {
+            return response()->json([
+                'status' => false,
+                'data' => null,
+            ]);
+        }
 
         $image->move(public_path('img'), $imageName);
 
         $imageUpload = new ImageUpload();
         $imageUpload->filename = $imageName;
         $imageUpload->save();
-        return response()->json(['success' => asset('img/' . $imageName)]);
+        return response()->json([
+            'status' => true,
+            'data' => asset('img/' . $imageName)
+        ]);
     }
 
-    // function delete(Request $request)
-    // {
-    //     $filename =  $request->get('filename');
-    //     ImageUpload::where('filename', $filename)->delete();
-    //     $path = public_path('/images/' . $filename);
-    //     if (file_exists($path)) {
-    //         unlink($path);
-    //     }
-    //     return $filename;
-    // }
 
     function all_info()
     {

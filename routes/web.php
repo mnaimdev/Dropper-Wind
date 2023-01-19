@@ -28,7 +28,6 @@ Route::post('/drag/upload', [DropzoneController::class, 'drag_upload'])->name('d
 
 Route::get('/all/info', [DropzoneController::class, 'all_info'])->name('all.info');
 
-// Route::post('/image/delete', [DropzoneController::class, 'delete'])->name('delete');
 
 
 
